@@ -7,7 +7,6 @@ import nodata from "../assets/nodata.webp";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../Components/Pagination";
 import PaginationforFav from "../Components/PageforFav";
-// import PageforFav from '../Components/PageforFav';
 import FavCard from "../Components/FavCard";
 
 function Home({ favourites, AddtoFav = () => {}, onDelete = () => {} }) {
@@ -20,18 +19,20 @@ function Home({ favourites, AddtoFav = () => {}, onDelete = () => {} }) {
   const [, setError] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(4);
-  const [favcurentPage, setFavCurrentPage] = useState(1);
-  const [favPostsPerPage, setFavPostsPerPage] = useState(4);
+  let [favcurentPage, setFavCurrentPage] = useState(1);
+   let [favPostsPerPage, setFavPostsPerPage] = useState(4);
 
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
-  const lastFavPostIndex = favcurentPage * favPostsPerPage;
-  const firstFavPostIndex = lastFavPostIndex - favPostsPerPage;
+   let lastFavPostIndex = favcurentPage * favPostsPerPage;
+   let firstFavPostIndex = lastFavPostIndex - favPostsPerPage;
   const currentmovies = movies.slice(firstPostIndex, lastPostIndex);
-  const favmovies = favourites.slice(firstFavPostIndex, lastFavPostIndex);
-  console.log(favmovies);
+   let favmovies = favourites.slice(firstFavPostIndex, lastFavPostIndex);
 
-  console.log(favourites);
+   console.log(favmovies,firstFavPostIndex,lastFavPostIndex,favcurentPage,favPostsPerPage);
+
+   console.log(currentmovies,firstPostIndex,lastPostIndex,currentPage,postsPerPage);  
+ 
 
   function onChange(e) {
     if (e) {
@@ -113,7 +114,7 @@ function Home({ favourites, AddtoFav = () => {}, onDelete = () => {} }) {
         currentPage={currentPage}
       />
       <div>
-        <h1>Favourites</h1>
+        <h1 style={{marginLeft:"20px"}}>Favourites</h1>
         <div className="movie-card-container">
           {favmovies.length > 0 ? (
             favmovies.map((movie, index) => (
@@ -126,17 +127,17 @@ function Home({ favourites, AddtoFav = () => {}, onDelete = () => {} }) {
             ))
           ) : (
             <div>
-              <img src={nodata} width={100} />
-              <p>No favourites</p>
+              <img src={nodata} width={300} />
+              <p style={{textAlign:"center",fontSize:"20px" }}>No favourites</p>
             </div>
           )}
         </div>
         <PaginationforFav
-          favTotalPosts={favourites.length}
-          favPostsPerPage={favPostsPerPage}
-          setFavCurrentPage={setFavCurrentPage}
-          favCurrentPage={favcurentPage}
-        />
+          TotalPosts={favourites.length}
+          PostsPerPage={favPostsPerPage}
+          setCurrentPage={setFavCurrentPage}
+          CurrentPage={favcurentPage}
+        /> 
       </div>
     </>
   );

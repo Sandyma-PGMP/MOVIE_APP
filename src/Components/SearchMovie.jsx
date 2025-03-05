@@ -1,5 +1,4 @@
 import "./navbar.css"
-import search from "../assets/search.png";
 export default function SearchMovie({ onSearch = () => {}, onSelect = () => {}, onClick = () => {}, onPage = () => {}  }) {
   return (
     <>
@@ -20,7 +19,6 @@ export default function SearchMovie({ onSearch = () => {}, onSelect = () => {}, 
             </select> */}
             <button onClick={onClick}>
               <p>Search</p>
-              <img   src={search} alt="" />
             </button>
               
     </div>

@@ -4,6 +4,7 @@ const MovieContainer = styled.div`
   flex-direction: column;
   padding: 10px;
   width: 280px;
+  height:1 vh;
   box-shadow: 0 3px 10px 0 #aaa;
   cursor: pointer;
 `;
