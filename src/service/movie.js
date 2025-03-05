@@ -1,7 +1,7 @@
 const apiKey = "220891d3";
 
 export async function getMovieById(movieId) {
-    const URi = `http://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}`;
+    const URi = `https://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}`;
     let data = null;
     let error = null;
 
@@ -23,11 +23,11 @@ export async function getDesiredMovieService(
   search = "",
   type = "",
 ) {
-  let URi = `http://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
+  let URi = `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}`;
   let data = null;
   let error = null;
   if (type && search) {
-    URi = `http://www.omdbapi.com/?s=${search}&apikey=${apiKey}&type=${type}`;
+    URi = `https://www.omdbapi.com/?s=${search}&apikey=${apiKey}&type=${type}`;
   }
   try {
     const response = await fetch(URi);
